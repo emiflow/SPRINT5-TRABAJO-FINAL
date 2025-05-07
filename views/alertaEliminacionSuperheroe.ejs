@@ -1,0 +1,7 @@
+<div class="delete-container">
+    <h1 class="delete-title">¿Estás seguro de eliminar a <%= idNombreSuperheroe.nombreOficialEspanol %>?</h1>
+    <form action="http://localhost:3000/borrarPorId/<%=idNombreSuperheroe._id%>?_method=DELETE" method="post" class="delete-form">
+        <button type="submit" name="confirmacion" value="SI" class="btn btn-yes">Sí</button>
+        <button type="submit" name="confirmacion" value="NO" class="btn btn-no">No</button>
+    </form>
+</div>

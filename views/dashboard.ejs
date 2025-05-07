@@ -1,0 +1,111 @@
+
+<div class="overflow-x-auto">
+        <table class="min-w-full bg-white border border-gray-300 shadow-lg rounded-lg">
+            <thead class="bg-blue-600 text-white">
+                <tr>
+                    <th class="p-3 text-left">Nombre Oficial en Español</th>
+                    <th class="p-3 text-left">Capital</th>
+                    <th class="p-3 text-left">Fronteras</th>
+                    <th class="p-3 text-left">Área</th>
+                    <th class="p-3 text-left">Población</th>
+                    <th class="p-3 text-left">Índice Gini</th>
+                    <th class="p-3 text-left">Zonas Horarias</th>
+                    <th class="p-3 text-left">Creador</th>
+                    <th class="p-3 text-left">Actualizar</th>
+                    <th class="p-3 text-left">Eliminar</th>
+                </tr>
+            </thead>
+            <tbody class="text-gray-700">
+                <% let poblacionTotal=0
+                    let areaTotal=0
+                    let cantidadPaisesGini=0
+                    let giniTotal=0
+                    let anioGini=0
+                    let indiceGini=0
+                %>
+                <% paises.forEach(pais => { %>
+                <tr class="border-b hover:bg-gray-200 transition">
+                    <td class="p-3"><%= pais.name.nativeName.spa.official %></td>
+                    <td class="p-3"><%= pais.capital %></td>
+                    <% if (pais.borders.length > 0 ) { %>
+                        <td class="p-3"><%= pais.borders %></td>
+                      <% } else { %>
+                        <td>No disponible</td>
+                      <% } %>
+                      <% areaTotal=areaTotal+pais.area; %>
+                    <td class="p-3"><%= pais.area %></td>
+                    <% poblacionTotal=poblacionTotal+pais.population;%>
+                    <td class="p-3"><%= pais.population %></td>
+                    <% if (pais.gini) { 
+                        const giniYear = Object.keys(pais.gini)[0]; 
+                        const giniValue = pais.gini[giniYear];
+                        anioGini=giniYear;
+                        indiceGini=giniValue;
+                        if(giniYear !='' ){
+                            cantidadPaisesGini++;
+                            giniTotal=giniTotal+giniValue; 
+                        }
+                        
+                   %>
+                     <td> "<%= giniYear %>" : <%= giniValue %></td>
+                   <% } else { %>
+                        <%
+                        anioGini="No disponible";
+                        indiceGini="No disponible";
+                        %>
+                     <td> No disponible</td>
+                   <% } %>
+                    <td class="p-3"><%= pais.timezones %></td>
+                    <td class="p-3"><%= pais.creador %></td>
+                    <td class="p-3">
+                        <form action="http://localhost:3000/formularioActualizarSuperheroe" method="post">
+                            <input type="hidden" name="_id" value="<%= pais._id %>">
+                            <input type="hidden" name="nombreOficialEspanol" value="<%= pais.name.nativeName.spa.official %>">
+                            <input type="hidden" name="capital" value="<%= pais.capital%>">
+                            <input type="hidden" name="fronteras" value="<%= pais.borders %>">
+                            <input type="hidden" name="area" value="<%= pais.area %>">
+                            <input type="hidden" name="poblacion" value="<%= pais.population %>">
+                            <input type="hidden" name="anioGini" value="<%= anioGini %>">
+                            <input type="hidden" name="indiceGini" value="<%= indiceGini %>">
+                            <input type="hidden" name="zonasHorarias" value="<%= pais.timezones %>">
+                            <input type="hidden" name="creador" value="<%= pais.creador %>">
+                            <button type="submit" class="btn-actualizar">Actualizar</button>
+                        </form>
+                    </td>
+                    <td class="p-3">
+                        <form action="http://localhost:3000/alertaEliminacionSuperheroe" method="post">
+                            <input type="hidden" name="_id" value="<%= pais._id %>">
+                            <input type="hidden" name="nombreOficialEspanol" value="<%= pais.name.nativeName.spa.official %>">
+                            <button type="submit" class="btn-eliminar">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+                <% }); %>
+                <tr>
+                    <td >
+                        TOTALES
+                    </td>
+                    <td>
+                        -
+                    </td>
+                    <td>
+                        -
+                    </td>
+                    <td>
+                        <%= areaTotal %>
+                    </td>
+                    <td><%= poblacionTotal %></td>
+                    <td><%= (giniTotal/cantidadPaisesGini).toFixed(2); %></td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+                
+            </tbody>
+        </table>
+
+
+</div>
+
+

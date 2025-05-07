@@ -1,0 +1,66 @@
+<div class="form-container">
+    <h1 class="form-title">Crear País</h1>
+  
+    <form action="http://localhost:3000/crearSuperheroe" method="post" class="form-body">
+      <!-- Información general del país -->
+      <fieldset class="fieldset">
+        <legend>Información del País</legend>
+        <div class="grid-inputs">
+          <label class="form-label">
+            Nombre Oficial en Español:
+            <input type="text" name="nombreOficialEspanol" required class="form-input" />
+          </label>
+  
+          <label class="form-label">
+            Capital:
+            <input type="text" name="capital" required class="form-input" />
+          </label>
+  
+          <label class="form-label">
+            Fronteras (Separar con comas):
+            <input type="text" name="fronteras" class="form-input" />
+          </label>
+  
+          <label class="form-label">
+            Área:
+            <input type="number" name="area" required class="form-input" />
+          </label>
+  
+          <label class="form-label">
+            Población:
+            <input type="number" step="0.01" name="poblacion" required class="form-input" />
+          </label>
+  
+          <label class="form-label">
+            Zonas Horarias (Separar con comas):
+            <input type="text" name="zonasHorarias" required class="form-input" />
+          </label>
+  
+          <label class="form-label">
+            Creador:
+            <input type="text" name="creador" required class="form-input" />
+          </label>
+        </div>
+      </fieldset>
+  
+      <!-- Información del índice Gini -->
+      <fieldset class="fieldset">
+        <legend>Datos del Índice Gini</legend>
+        <div class="grid-inputs">
+          <label class="form-label">
+            Año:
+            <input type="number" name="anio" min="1900" max="2100" required class="form-input" />
+          </label>
+  
+          <label class="form-label">
+            Índice de Gini:
+            <input type="number" step="0.01" name="gini" required class="form-input" />
+          </label>
+        </div>
+      </fieldset>
+  
+      <button type="submit" class="submit-button">Crear País</button>
+    </form>
+  </div>
+  
+    

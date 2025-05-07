@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modificar Superheroe</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-6">
+    <div class="max-w-3xl mx-auto bg-white p-6 shadow-lg rounded-lg">
+        <h1 class="text-2xl font-bold mb-4 text-center">Formulario Actualizar</h1>
+        <form action="http://localhost:3000/actualizarSuperheroe/<%=datos._id%>?_method=PUT" method="post" class="space-y-4">
+            <fieldset class="border p-4 rounded-lg">
+                <legend class="font-semibold text-lg">Información General</legend>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <label class="block">Nombre Oficial en Español:
+                        <input type="text" name="nombreOficialEspanol"
+                            value="<%=datos.nombreOficialEspanol%>" class="w-full p-2 border rounded-lg">
+                    </label>
+                    <label class="block">Capital:
+                        <input type="text" name="capital" value="<%=datos.capital%>" 
+                            class="w-full p-2 border rounded-lg">
+                    </label>
+                    <label class="block">Fronteras:
+                        <input type="text" name="fronteras" value="<%=datos.fronteras%>" class="w-full p-2 border rounded-lg">
+                    </label>
+                    <label class="block">Área:
+                        <input type="number" name="area"  value="<%=datos.area%>" 
+                            class="w-full p-2 border rounded-lg">
+                    </label>
+                    <label class="block">Poblacion:
+                        <input type="number" name="poblacion"  value="<%=datos.poblacion%>" class="w-full p-2 border rounded-lg">
+                    </label>
+                    
+                    <label class="block">Zonas Horarias:
+                        <input type="text" name="zonasHorarias"  value="<%=datos.zonasHorarias%>" class="w-full p-2 border rounded-lg">
+                    </label>
+                    <label class="block">Creador:
+                        <input type="text" name="creador"  value="<%=datos.creador%>" class="w-full p-2 border rounded-lg">
+                    </label>
+                </div>
+            </fieldset>
+            <fieldset class="border p-4 rounded-lg">
+                <legend class="font-semibold text-lg">Gini:</legend>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <label class="block">Año Gini
+                        <input type="number" name="anio"  value="<%=datos.anioGini%>" class="w-full p-2 border rounded-lg">
+                    </label>
+                    <label class="block">Indice Gini:
+                        <input type="float" name="gini"  value="<%=datos.indiceGini%>" class="w-full p-2 border rounded-lg">
+                    </label>
+                </div>
+            </fieldset>
+            <button type="submit" class="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition">
+                Actualizar Pais
+            </button>
+        </form>
+    </div>
+</body>
+</html>
